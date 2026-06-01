@@ -8,23 +8,13 @@ so expect rough edges and tell us what's missing.
 ## What you need
 
 1. **Claude Code** (or Claude Desktop with plugin support).
-2. **A Lighty token** — the Lighty team gives you this. It's yours; don't share it.
-   (You don't need an MCP URL — it's already baked into the plugin.)
+2. **A Lighty account** in the Lighty WorkOS organization (the same one you use for
+   the Lighty dashboard). There's no token or URL to set — Claude signs you in through
+   your browser. Not sure you're in the org? Ask the Lighty team.
 
 ## Setup (one time)
 
-### Step 1 — Set your token
-
-Set the token the Lighty team gave you as an environment variable so Claude can
-authenticate:
-```bash
-export LIGHTY_MCP_TOKEN="<the token the Lighty team gave you>"
-```
-Put it in your shell profile (`~/.zshrc`, `~/.bashrc`) so it persists. The hosted
-MCP URL (`https://app.lighty.ai`) is already baked into the plugin — you only set
-the token.
-
-### Step 2 — Install the plugin
+### Step 1 — Install the plugin
 
 This plugin is published in a **public marketplace**, so there's nothing to clone
 or download — you add the marketplace by name and install. The steps differ
@@ -66,7 +56,14 @@ once from your terminal, then install from Desktop:
 2. In Claude Desktop, click the **+** next to the message box → **Plugins** →
    **Add plugin**.
 3. Find **lighty-dogfood** in the list and install it (User scope is fine).
-4. **Restart Claude Desktop** so the Lighty MCP server connects.
+4. **Restart Claude Desktop** so the plugin loads.
+
+### Step 2 — Sign in with WorkOS
+
+The first time Claude connects to Lighty, it opens a **WorkOS sign-in** in your
+browser — sign in with your Lighty account and approve. That's it: there's no token
+to copy or URL to set. (You must be a member of the Lighty WorkOS organization — the
+same one you use for the Lighty dashboard; ask the Lighty team if you're not sure.)
 
 ## Try it now — no data of your own needed
 

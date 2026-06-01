@@ -46,8 +46,9 @@ After an analysis completes, these explore it (all take the `dataset_id`):
 
 ## The flow
 
-1. **Connect.** Call `get_capabilities`. If it errors, the token/URL isn't set —
-   point the user to the plugin README (set `LIGHTY_MCP_TOKEN`). Tell them which
+1. **Connect.** Call `get_capabilities`. If it errors, the user isn't signed in —
+   Claude opens a **WorkOS browser sign-in** on first connect; point them to the plugin
+   README and check they're a member of the Lighty WorkOS org. Tell them which
    capabilities are online.
 
 2. **Pick the data.**
@@ -118,7 +119,7 @@ The hosted MCP analyzes **server-side** datasets. For v0:
 
 ## When something breaks
 
-- `get_capabilities` errors → token/URL not configured (README).
+- `get_capabilities` errors → not signed in (WorkOS) or not in the Lighty org (README).
 - `inspect_dataset`/`commit_ingest` returns `{"error": ...}` → relay it plainly and
   suggest a fix (wrong path, unsupported format).
 - `run_analysis` job ends `failed` → fetch the job's error, summarize it, and offer

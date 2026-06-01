@@ -14,14 +14,10 @@ In a Claude Code session:
 /reload-plugins
 ```
 
-Then set the token the Lighty team gave you:
-
-```bash
-export LIGHTY_MCP_TOKEN="<your token>"
-```
-
-(The hosted MCP URL, `https://app.lighty.ai`, is already baked into the plugin —
-you only set the token. The token is per-user; don't share it.)
+The first time Claude connects, it opens a **WorkOS sign-in** in your browser —
+sign in with your Lighty account and approve. There's no token or URL to set; the
+hosted MCP URL (`https://app.lighty.ai`) is baked into the plugin. You must be a
+member of the Lighty WorkOS organization — ask the Lighty team if you're not sure.
 
 ## Plugins
 
@@ -32,5 +28,5 @@ you only set the token. The token is per-user; don't share it.)
 ## How it works
 
 These plugins are thin — the compute lives in the hosted Lighty platform. Each
-plugin bundles an MCP client that connects to `https://app.lighty.ai`; your token
-authenticates you. See each plugin's README for details.
+plugin bundles an MCP client that connects to `https://app.lighty.ai`; WorkOS
+(browser sign-in, no token) authenticates you. See each plugin's README for details.
