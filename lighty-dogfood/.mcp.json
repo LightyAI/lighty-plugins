@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "lighty-platform": {
+      "type": "http",
+      "url": "https://app.lighty.ai/mcp"
+    }
+  }
+}

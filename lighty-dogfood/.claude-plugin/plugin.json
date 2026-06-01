@@ -1,0 +1,6 @@
+{
+  "name": "lighty-dogfood",
+  "version": "0.1.0",
+  "description": "Drive the Lighty platform from Claude: point at a dataset, get discovered workflows, causal structure, and a report. Connects to the hosted Lighty MCP compute plane.",
+  "author": { "name": "Lighty AI" }
+}

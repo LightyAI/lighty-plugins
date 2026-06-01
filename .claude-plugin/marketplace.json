@@ -1,0 +1,11 @@
+{
+  "name": "lighty-plugins",
+  "owner": { "name": "Lighty AI" },
+  "plugins": [
+    {
+      "name": "lighty-dogfood",
+      "source": "./lighty-dogfood",
+      "description": "Drive the Lighty platform from Claude — analyze a dataset, discover workflows + causal structure, get a report. Connects to the hosted Lighty MCP."
+    }
+  ]
+}
