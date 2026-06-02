@@ -71,10 +71,13 @@ After an analysis completes, these explore it (all take the `dataset_id`):
 4. **Stage it.** `commit_ingest(file_path)` → keep the `dataset_id`. Tell the user
    how many events were staged.
 
-5. **Analyze.** `run_analysis(dataset_id)` → keep the `job_id`. Then **poll**
-   `get_job(job_id)` roughly every 20–30 seconds, reporting progress as a short
-   human update ("discovering workflow steps…", "~60% done"). Don't spam; summarize.
-   A real run can take several minutes. If they ask to stop, `cancel_job(job_id)`.
+5. **Analyze.** `run_analysis(dataset_id)` → keep the `job_id`. The run also
+   registers on the **Lighty Studio** live rail; `run_analysis` returns a
+   `studio_url` — share it so the user can watch the phases stream in the browser
+   while you poll. Then **poll** `get_job(job_id)` roughly every 20–30 seconds,
+   reporting progress as a short human update ("discovering workflow steps…",
+   "~60% done"). Don't spam; summarize. A real run can take several minutes. If
+   they ask to stop, `cancel_job(job_id)`.
 
 6. **Explain the result.** When the job completes, call `get_analysis_result(job_id)`
    for the headline, then use the `dataset_id` exploration tools for depth, and
