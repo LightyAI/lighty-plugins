@@ -54,10 +54,15 @@ your terminal, then install from Desktop:
    ```
    No CLI installed? Run `npm install -g @anthropic-ai/claude-code` first — it's the
    simplest way to register the marketplace that Desktop can then see.
-2. In Claude Desktop, click the **+** next to the message box → **Plugins** →
-   **Add plugin**.
-3. Find **lighty-dogfood** in the list and install it (User scope is fine).
-4. **Restart Claude Desktop** so the Lighty MCP server connects.
+2. In Claude Desktop, open **Plugins** — the Lighty plugin is listed under **Code**.
+   Find **lighty-dogfood** there and install it.
+3. Connect the server so it can sign you in: go to **Plugins → Connectors**, find
+   **lighty-platform**, and click **Connect**. This opens the WorkOS sign-in in your
+   browser (Step 2 below).
+4. If the Lighty tools don't appear, **restart Claude Desktop**.
+
+> Installing the plugin alone does **not** connect the MCP server — without the
+> **Connectors → Connect** step, `lighty-platform` won't show up in Claude's MCP list.
 
 > **Maintainers:** the canonical source for this plugin is
 > [`LightyAI/lightly-core`](https://github.com/LightyAI/lightly-core) under
