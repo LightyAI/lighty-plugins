@@ -4,6 +4,15 @@ Public plugin marketplace for [Lighty AI](https://lighty.ai). Add it to Claude
 Code (or Claude Desktop) to drive the Lighty platform from your own Claude — no
 repo checkout required.
 
+> **This directory is the source of truth.** The public
+> [`LightyAI/lighty-plugins`](https://github.com/LightyAI/lighty-plugins) repo is
+> **generated from this `plugins/` folder** by CI on every merge to `main` (see
+> [`.github/workflows/sync-plugins-marketplace.yml`](../.github/workflows/sync-plugins-marketplace.yml)).
+> Edit here, never the published repo. A consistency test
+> (`workflow_engine/tests/test_plugin_marketplace_consistency.py`) gates `main` so
+> the install commands, MCP URL, and auth model can't drift across the READMEs, the
+> skill, and the website (`workflow_engine/ui/hub.html`).
+
 ## Install
 
 In a Claude Code session:

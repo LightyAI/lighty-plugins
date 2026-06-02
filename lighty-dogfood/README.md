@@ -16,9 +16,10 @@ so expect rough edges and tell us what's missing.
 
 ### Step 1 — Install the plugin
 
-This plugin is published in a **public marketplace**, so there's nothing to clone
-or download — you add the marketplace by name and install. The steps differ
-slightly between Claude Code and Claude Desktop.
+The `lighty-dogfood` plugin is published in a **public marketplace**
+([`LightyAI/lighty-plugins`](https://github.com/LightyAI/lighty-plugins)), so
+there's nothing to clone or download — you add the marketplace by name and install.
+The steps differ slightly between Claude Code and Claude Desktop.
 
 **Claude Code (CLI)**
 
@@ -43,9 +44,9 @@ claude plugin install lighty-dogfood@lighty-plugins
 **Claude Desktop**
 
 Claude Desktop installs plugins from its built-in plugin browser rather than by
-typing a marketplace name into chat — but it reads the **same** marketplace
-registry as the Claude Code CLI on the same machine. So register the marketplace
-once from your terminal, then install from Desktop:
+typing a marketplace name into chat — but it reads the **same** marketplace registry
+as the Claude Code CLI on the same machine. So register the marketplace once from
+your terminal, then install from Desktop:
 
 1. Register the marketplace (one line in your terminal):
    ```bash
@@ -56,7 +57,16 @@ once from your terminal, then install from Desktop:
 2. In Claude Desktop, click the **+** next to the message box → **Plugins** →
    **Add plugin**.
 3. Find **lighty-dogfood** in the list and install it (User scope is fine).
-4. **Restart Claude Desktop** so the plugin loads.
+4. **Restart Claude Desktop** so the Lighty MCP server connects.
+
+> **Maintainers:** the canonical source for this plugin is
+> [`LightyAI/lightly-core`](https://github.com/LightyAI/lightly-core) under
+> `plugins/lighty-dogfood/`. The public
+> [`LightyAI/lighty-plugins`](https://github.com/LightyAI/lighty-plugins) marketplace
+> is **generated from it** by CI on every merge to `main` (see
+> `.github/workflows/sync-plugins-marketplace.yml`) — edit the source here, never the
+> published copy. To test a local working copy, point the marketplace at your checkout:
+> `/plugin marketplace add /path/to/lightly-core/plugins`.
 
 ### Step 2 — Sign in with WorkOS
 
