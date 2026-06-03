@@ -1,7 +1,7 @@
 # Lighty Plugins
 
 Public plugin marketplace for [Lighty AI](https://lighty.ai). Add it to Claude
-Code (or Claude Desktop) to drive the Lighty platform from your own Claude — no
+Desktop (or Claude Code) to drive the Lighty platform from your own Claude — no
 repo checkout required.
 
 > **This directory is the source of truth.** The public
@@ -15,7 +15,13 @@ repo checkout required.
 
 ## Install
 
-In a Claude Code session:
+**Claude Desktop** (default — no terminal needed): open **Customize → Plugins**, and
+under **Personal plugins** click **+ → Add marketplace → Add from a repository** and
+enter `LightyAI/lighty-plugins`. Then **Browse plugins**, find **lighty-dogfood**
+(under **Code**) and **Install**, and finally open the plugin's **Connectors → lighty-platform → Connect**.
+The [plugin README](./lighty-dogfood/README.md) has the step-by-step with screenshots.
+
+**Claude Code (CLI):** in a Claude Code session —
 
 ```
 /plugin marketplace add LightyAI/lighty-plugins

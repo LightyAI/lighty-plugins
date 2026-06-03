@@ -7,7 +7,7 @@ so expect rough edges and tell us what's missing.
 
 ## What you need
 
-1. **Claude Code** (or Claude Desktop with plugin support).
+1. **Claude Desktop** (or Claude Code) with plugin support.
 2. **A Lighty account** in the Lighty WorkOS organization (the same one you use for
    the Lighty dashboard). There's no token or URL to set — Claude signs you in through
    your browser. Not sure you're in the org? Ask the Lighty team.
@@ -19,32 +19,7 @@ so expect rough edges and tell us what's missing.
 The `lighty-dogfood` plugin is published in a **public marketplace**
 ([`LightyAI/lighty-plugins`](https://github.com/LightyAI/lighty-plugins)), so
 there's nothing to clone or download — you add the marketplace by name and install.
-The steps differ slightly between Claude Code and Claude Desktop.
-
-**Claude Code (CLI)**
-
-These are **Claude Code** slash commands — they work only in the Claude Code CLI, not
-Claude Desktop chat or claude.ai (paste them there and you'll just get "that's not a
-command I have"; use the Claude Desktop steps below instead). New to Claude Code? Install
-it with `npm install -g @anthropic-ai/claude-code`.
-
-In a Claude Code session:
-```
-/plugin marketplace add LightyAI/lighty-plugins
-/plugin install lighty-dogfood@lighty-plugins
-```
-Then activate it:
-```
-/reload-plugins
-```
-`/reload-plugins` connects the Lighty MCP server without a full restart; restarting
-Claude Code works too.
-
-Prefer your shell? The same two steps run non-interactively:
-```bash
-claude plugin marketplace add LightyAI/lighty-plugins
-claude plugin install lighty-dogfood@lighty-plugins
-```
+The steps differ slightly between Claude Desktop and Claude Code.
 
 **Claude Desktop**
 
@@ -69,9 +44,30 @@ Claude Desktop does it all in the app — no terminal needed:
 > Installing the plugin alone does **not** connect the MCP server — without the
 > **Connect** step in **Connectors**, `lighty-platform` won't show up in Claude's tool list.
 
-Prefer the terminal? `claude plugin marketplace add LightyAI/lighty-plugins` registers the
-same marketplace (needs the CLI — `npm install -g @anthropic-ai/claude-code`); Desktop then
-lists it under **Browse plugins**.
+**Claude Code (CLI)**
+
+These are **Claude Code** slash commands — they work only in the Claude Code CLI, not
+Claude Desktop chat or claude.ai (paste them there and you'll just get "that's not a
+command I have"; use the Claude Desktop steps above instead). New to Claude Code? Install
+it with `npm install -g @anthropic-ai/claude-code`.
+
+In a Claude Code session:
+```
+/plugin marketplace add LightyAI/lighty-plugins
+/plugin install lighty-dogfood@lighty-plugins
+```
+Then activate it:
+```
+/reload-plugins
+```
+`/reload-plugins` connects the Lighty MCP server without a full restart; restarting
+Claude Code works too.
+
+Prefer your shell? The same two steps run non-interactively:
+```bash
+claude plugin marketplace add LightyAI/lighty-plugins
+claude plugin install lighty-dogfood@lighty-plugins
+```
 
 Official walkthrough with screenshots: [Use plugins in Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude).
 
