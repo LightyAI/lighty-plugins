@@ -23,23 +23,26 @@ The steps differ slightly between Claude Desktop and Claude Code.
 
 **Claude Desktop**
 
-Claude Desktop does it all in the app — no terminal needed:
+Claude Desktop does it all in the app — no terminal needed. (The `/plugin` slash
+commands **don't** work in the Desktop chat — those are Claude Code only; install
+from the **Plugins** menu instead.)
 
 1. Open the **Customize** menu in the left sidebar, then open the **Plugins** tab.
    (In Cowork, open the **Cowork** tab first, then **Customize**.)
-2. In the **Personal plugins** section, click the **+** button → **Add marketplace** →
-   **Add from a repository**, and enter the marketplace repo:
+2. In the **Personal plugins** section, click the small **+** button → **Create plugin** →
+   **Add marketplace** — yes, "Add marketplace" is nested under **Create plugin** — and
+   enter the marketplace repo:
    ```
    LightyAI/lighty-plugins
    ```
    The field accepts a GitHub `owner/repo` or git URL —
    `https://github.com/LightyAI/lighty-plugins` works too.
-3. Click **Browse plugins**, find **lighty-dogfood** (listed under **Code**), and
-   click **Install**.
+3. Click the **+** again → **Browse plugins**, find **lighty-dogfood** (listed under
+   **Code**), and click **Install**.
 4. Connect the server so it can sign you in: open the plugin's **Connectors**, find
    **lighty-platform**, and click **Connect**. This opens the WorkOS sign-in in your
    browser (Step 2 below).
-5. If the Lighty tools don't appear, **restart Claude Desktop**.
+5. **Restart Claude Desktop** so the Lighty tools load.
 
 > Installing the plugin alone does **not** connect the MCP server — without the
 > **Connect** step in **Connectors**, `lighty-platform` won't show up in Claude's tool list.

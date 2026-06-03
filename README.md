@@ -16,9 +16,10 @@ repo checkout required.
 ## Install
 
 **Claude Desktop** (default — no terminal needed): open **Customize → Plugins**, and
-under **Personal plugins** click **+ → Add marketplace → Add from a repository** and
-enter `LightyAI/lighty-plugins`. Then **Browse plugins**, find **lighty-dogfood**
-(under **Code**) and **Install**, and finally open the plugin's **Connectors → lighty-platform → Connect**.
+under **Personal plugins** click the small **+ → Create plugin → Add marketplace** and
+enter `LightyAI/lighty-plugins`. Then **+ → Browse plugins**, find **lighty-dogfood**
+(under **Code**) and **Install**, open the plugin's **Connectors → lighty-platform → Connect**,
+and **restart Claude Desktop**. (The `/plugin` slash commands work only in Claude Code, not the Desktop chat.)
 The [plugin README](./lighty-dogfood/README.md) has the step-by-step with screenshots.
 
 **Claude Code (CLI):** in a Claude Code session —
