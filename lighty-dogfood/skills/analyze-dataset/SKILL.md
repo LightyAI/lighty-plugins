@@ -23,6 +23,8 @@ The `lighty-platform` MCP server exposes these tools (call them via their
 | `list_datasets` | Lists datasets that already have a completed analysis. |
 | `inspect_dataset(file_path)` | Detects the format + previews a few rows (the look-before-you-commit step). |
 | `commit_ingest(file_path)` | Converts + stages the dataset; returns a `dataset_id`. |
+| `stage_raw(filename, dataset_id?)` | For a **large local file** (PST, DB export, archive): returns a resumable `signed_url` + `object_key` to upload it straight to GCS. |
+| `extract_raw(dataset_id, object_key)` | After the upload completes, converts the raw object to events (async job); poll `get_job`, then `run_analysis(dataset_id)`. |
 | `run_analysis(dataset_id)` | Starts the analysis pipeline (a background job); returns a `job_id`. |
 | `get_job(job_id)` | Status + progress of a running analysis. |
 | `get_analysis_result(job_id)` | The finished result: workflows, patterns, causal factors, summary. |
@@ -60,6 +62,10 @@ After an analysis completes, these explore it (all take the `dataset_id`):
      to step 6 with that dataset's `job_id` (or re-run if they want fresh results).
    - To analyze a new dataset of their own: get its server path, then
      `inspect_dataset(file_path)`.
+   - **A large file on their machine (PST, DB export, archive):** use the upload
+     flow in "Bringing your own data" — `stage_raw` → background upload (report
+     progress) → `extract_raw` → poll `get_job` → `run_analysis`. It's a long
+     async job: kick it off, keep them updated, don't block the chat on it.
 
 3. **Show, then confirm.** Relay `inspect_dataset`'s format, record count, and a
    couple of sample rows in plain terms. If `is_generic_fallback` is true, warn that
@@ -117,8 +123,16 @@ The hosted MCP analyzes **server-side** datasets. For v0:
   Lighty team gave you).
 - Your own file: upload it via the hosted Explorer UI (drag-and-drop at
   `https://app.lighty.ai/explorer.html`), then give me the resulting path.
-- Direct laptop-file upload through chat is **not** in v0 — flag it as feedback if
-  you want it; it's on the roadmap.
+- **Your own large local file (PST, DB export, archive):** I can upload it for you.
+  1. `stage_raw(filename)` → I get a scoped resumable upload URL + an `object_key`.
+  2. I stream the file straight to that URL with the plugin's bundled uploader
+     (`python "$CLAUDE_PLUGIN_ROOT/scripts/gcs_resumable_upload.py" <file> "<signed_url>"`),
+     run in the background so I can report progress — the bytes go from your
+     machine to storage directly, not through chat. A 10 GB file over a typical
+     uplink can take 15–40 minutes; it resumes if the connection blips.
+  3. `extract_raw(dataset_id, object_key)` → conversion runs as a background job;
+     I poll `get_job` and then `run_analysis(dataset_id)`.
+  Point me at the file and say "analyze this" — I'll handle the steps.
 
 ## When something breaks
 
